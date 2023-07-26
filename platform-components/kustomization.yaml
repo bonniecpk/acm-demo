@@ -1,0 +1,8 @@
+# ./kustomization.yaml
+resources:
+- cert-manager
+
+patches:
+- path: deployment.yaml
+  target:
+    kind: Deployment

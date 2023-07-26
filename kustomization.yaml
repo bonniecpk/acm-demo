@@ -4,3 +4,4 @@ resources:
 - namespace
 - cluster
 - clusterregistry
+- platform-components
