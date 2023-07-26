@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: whereami
   namespace: whereami
-  annotations:
-    configmanagement.gke.io/cluster-selector: dev-cluster-selector
 spec:
   selector:
     app: whereami

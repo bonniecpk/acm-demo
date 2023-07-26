@@ -4,8 +4,6 @@ kind: Deployment
 metadata:
   name: whereami
   namespace: whereami
-  annotations:
-    configmanagement.gke.io/cluster-selector: dev-cluster-selector
 spec:
   replicas: 1
   selector:
