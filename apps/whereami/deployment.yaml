@@ -1,0 +1,26 @@
+---    
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whereami
+  namespace: whereami
+  annotations:
+    configmanagement.gke.io/cluster-selector: dev-cluster-selector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whereami
+  template:
+    metadata:
+      labels:
+        app: whereami
+    spec:
+      containers:
+      - name: whereami
+        image: gcr.io/google-samples/whereami:v1.2.19
+        ports:
+          - containerPort: 8080
+        env:
+        - name: METADATA
+          value: "whereami"
