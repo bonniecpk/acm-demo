@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: whereami
-  namespace: whereami
+  namespace: replace-me
 spec:
   replicas: 1
   selector:
