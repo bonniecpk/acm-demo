@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
 - ../../apps
+- namespace.yaml
 
 patches:
 - target:
