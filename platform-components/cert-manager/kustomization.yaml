@@ -4,3 +4,7 @@ helmCharts:
   version: v1.5.3
   releaseName: my-cert-manager
   namespace: my-cert-manager
+  includeCRDs: true
+  valuesFile: values.yaml
+  valuesInline:
+    replicaCount: 123
