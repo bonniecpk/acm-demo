@@ -1,4 +1,4 @@
-# Copyright 2021 Google LLC
+# Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,8 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# [START anthos_config_management_namespace_specific_policy_src_base_namespace] 
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: whereami
+apiVersion: kustomization.config.k8s.io/v1beta1
+kind: Kustomization
+resources: 
+- namespaces
+- source-of-truths
