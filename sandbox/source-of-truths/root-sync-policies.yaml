@@ -24,7 +24,6 @@ spec:
     branch: hlf-mcm
     dir: my-policies
     auth: none 
-    periods: 15s 
     ## token
     # secretRef: 
     #   name: git-creds
