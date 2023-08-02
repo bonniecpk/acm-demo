@@ -1,0 +1,12 @@
+# ./kustomization.yaml
+resources:
+- cert-manager
+
+patches:
+- target:
+    kind: Deployment
+    name: my-cert-manager-webhook
+  patch: |-
+    - op: replace
+      path: /spec/replicas
+      value: 345

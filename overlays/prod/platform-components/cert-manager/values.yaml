@@ -1,4 +1,4 @@
 webhook:
   livenessProbe:
-    failureThreshold: 2
+    failureThreshold: 5
     initialDelaySeconds: 120

@@ -3,9 +3,6 @@ resources:
 - cert-manager
 
 patches:
-- path: deployment.yaml
-  target:
-    kind: Deployment
 - target:
     kind: Deployment
     name: my-cert-manager-webhook
