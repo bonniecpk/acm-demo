@@ -11,7 +11,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-apiVersion: v1
-kind: Namespace
-metadata: 
-  name: hello
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources: 
+- ../namespaces/newapp-1
+- ../namespaces/newapp-2
+- ../tenant/roles
+
+patches: 
+- target: ### change the values here based on dev/qa/prod
