@@ -15,15 +15,16 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: newapp-viewer
-  namespace: newapp-1 ##needs to be changed 
+  namespace: newapp-1
 subjects:
-- kind: ServiceAccount
-  name: newapp-1 ##needs to be changed 
+# - kind: ServiceAccount
+#   name: newapp-1 
+#   apiGroup: rbac.authorization.k8s.io 
+- kind: User
+  name: newapp-1-viewer@cn-datahub-logs.iam.gserviceaccount.com
   apiGroup: rbac.authorization.k8s.io 
-- kind: Group 
-  name: newapp-1-group@example.com ##needs to be changed 
-# - kind: User
-#   name: test-account@test-project.iam.gserviceaccount.com use workload identity instead
+# - kind: Group 
+#   name: newapp-1-group@example.com
 roleRef:
   kind: ClusterRole
   name: tenant-viewer

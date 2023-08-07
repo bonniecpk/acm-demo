@@ -14,5 +14,5 @@
 nameReferece: 
   - kind: RoleBinding
     fieldSpec: 
-    - kind: Group
+    - kind: User
       path: name

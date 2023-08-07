@@ -10,9 +10,5 @@ roleRef:
   name: tenant-deployer
 subjects:
 - apiGroup: rbac.authorization.k8s.io
-  kind: ServiceAccount
-  name: newapp-1
-- kind: User
+  kind: User
   name: newapp-1-deployer-604@cn-datahub-logs.iam.gserviceaccount.com
-- kind: Group
-  name: newapp-1-group@example.com
