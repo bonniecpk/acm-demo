@@ -14,13 +14,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources: 
-- compute-resources.yaml
-- default-deny-all-traffic.yaml
+# - compute-resources.yaml
+# - default-deny-all-traffic.yaml
 - namespace.yaml
-- newapp-adminstrator-role-binding.yaml 
+# - newapp-adminstrator-role-binding.yaml 
 - newapp-deployer-role-binding.yaml
-- newapp-developer-role-binding.yaml
-- newapp-viewer-role-binding.yaml
-- service-account.yaml
-- service-entry.yaml
+# - newapp-developer-role-binding.yaml
+# - newapp-viewer-role-binding.yaml
+# - service-account.yaml
+# - service-entry.yaml
 

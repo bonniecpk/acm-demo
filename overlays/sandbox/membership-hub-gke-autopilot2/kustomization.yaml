@@ -15,7 +15,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 -  ../../../namespaces/newapp-1
--  ../../../namespaces/newapp-2
+# -  ../../../namespaces/newapp-2
 - ../tenant/roles
 
 patches:
@@ -27,7 +27,7 @@ patches:
       path: /spec/loadBalancerIP
       value: 10.148.1.39
 
-namePrefix: dev-
+# namePrefix: dev-
 
-configuratios: 
-  - nameReference.yaml
+# configuratios: 
+#   - nameReference.yaml
