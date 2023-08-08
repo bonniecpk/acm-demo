@@ -33,7 +33,7 @@ patches:
   patch: |-
     - op: add
       path: "/metadata/labels/istio.io~1rev"
-      value: "asm-managed-rapid"    
+      value: "asm-managed-stable"    
 - target:
     kind: Namespace
     name: newapp-2
