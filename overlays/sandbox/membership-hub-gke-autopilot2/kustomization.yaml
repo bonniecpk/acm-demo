@@ -18,6 +18,7 @@ resources:
 -  ../../../namespaces/newapp-2
 - ../tenant/roles
 -  ../../../namespaces/asm-gateway
+
 patches:
 - target:
     kind: Deployment
@@ -26,7 +27,20 @@ patches:
     - op: add
       path: "/spec/template/metadata/labels/istio.io~1rev"
       value: "asm-managed-stable"    
-
+- target:
+    kind: Namespace
+    name: newapp-1
+  patch: |-
+    - op: add
+      path: "/metadata/labels/istio.io~1rev"
+      value: "asm-managed-rapid"    
+- target:
+    kind: Namespace
+    name: newapp-2
+  patch: |-
+    - op: add
+      path: "/metadata/labels/istio.io~1rev"
+      value: "asm-managed-stable"   
 # patches:
 # - target:
 #     kind: Service
@@ -35,21 +49,6 @@ patches:
 #     - op: add
 #       path: /spec/loadBalancerIP
 #       value: 10.70.10.28
-- target:
-    kind: Namespace
-    name: newapp-1
-  patch: |-
-    - op: add
-      path: "/metadata/labels/istio.io~1rev"
-      value: "asm-managed-stable"    
-- target:
-    kind: Namespace
-    name: newapp-2
-  patch: |-
-    - op: add
-      path: "/metadata/labels/istio.io~1rev"
-      value: "asm-managed-stable"   
-
 # namePrefix: dev-
 
 # configurations: 
