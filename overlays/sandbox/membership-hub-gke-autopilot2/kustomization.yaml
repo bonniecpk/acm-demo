@@ -18,6 +18,14 @@ resources:
 -  ../../../namespaces/newapp-2
 - ../tenant/roles
 -  ../../../namespaces/asm-gateway
+patches:
+- target:
+    kind: Deployment
+    name: istio-ingressgateway     
+  patch: |-
+    - op: add
+      path: "/spec/template/metadata/labels/istio.io~1rev"
+      value: "asm-managed-stable"    
 
 # patches:
 # - target:

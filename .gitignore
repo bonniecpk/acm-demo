@@ -1,3 +1,4 @@
 .DS_Store
 /dev-output
 /dev-output/*
+overlays/sandbox/membership-hub-gke-autopilot2/compiled/**
