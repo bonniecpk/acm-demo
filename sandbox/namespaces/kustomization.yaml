@@ -17,4 +17,4 @@ resources:
 - hello.yaml
 - foo.yaml
 - foo-1.yaml
-# - foo-service.yaml
+- foo-service.yaml
