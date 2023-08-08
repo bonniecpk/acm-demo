@@ -26,3 +26,6 @@ spec:
     - namespaceSelector: 
         matchLabels:
           kubernetes.io/metadata.name: newapp-2
+    - namespaceSelector: 
+      matchLabels:
+        kubernetes.io/metadata.name: asm-gateway
