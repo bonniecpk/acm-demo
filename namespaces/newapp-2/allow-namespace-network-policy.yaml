@@ -18,9 +18,9 @@ metadata:
   name: app-allow-newapp-1
   namespace: newapp-2
 spec: 
-  podSelector: 
-    matchLabels: 
-      app: svc-a
+  # podSelector: 
+  #   matchLabels: 
+  #     app: svc-a
   ingress: 
   - from: 
     - namespaceSelector: 
