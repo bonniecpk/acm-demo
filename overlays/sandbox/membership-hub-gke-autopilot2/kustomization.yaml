@@ -18,6 +18,29 @@ resources:
 -  ../../../namespaces/newapp-2
 - ../tenant/roles
 
+# patches:
+# - target:
+#     kind: Service
+#     name: istio-ingressgateway     
+#   patch: |-
+#     - op: add
+#       path: /spec/loadBalancerIP
+#       value: 10.70.10.28
+# - target:
+#     kind: Namespace
+#     name: newapp-1
+#   patch: |-
+#     - op: add
+#       path: "/metadata/labels/istio.io~1rev"
+#       value: "asm-managed-rapid"    
+# - target:
+#     kind: Namespace
+#     name: newapp-2
+#   patch: |-
+#     - op: add
+#       path: "/metadata/labels/istio.io~1rev"
+#       value: "asm-managed-rapid"   
+
 # namePrefix: dev-
 
 # configurations: 

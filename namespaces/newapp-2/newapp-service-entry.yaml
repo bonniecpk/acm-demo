@@ -11,16 +11,25 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-apiVersion: v1
-kind: Service
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
 metadata:
-  name: foo
-  namespace: newapp
+  name: allow-egress-httpbin
+  namespace: newapp-2
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'networking.istio.io|ServiceEntry|newapp-2|allow-egress-httpbin'
 spec:
-  type: LoadBalancer
-  selector:
-    app: foo
+  hosts:
+  - "httpbin.org"
   ports:
-  - name: http
-    port: 80
-    targetPort: 8080
+  - number: 80
+    protocol: HTTP
+    name: http
+  - number: 443
+    protocol: HTTPS
+    name: https
+
+
+
+
+
