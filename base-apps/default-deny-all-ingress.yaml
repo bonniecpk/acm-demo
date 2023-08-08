@@ -17,8 +17,5 @@ apiVersion: networking.k8s.io/v1
 metadata: 
   name: default-deny-all-traffic
 spec: 
-  policyTypes:
-  - Ingress
-  podSelector: {} ##matchlabel or name
-  egress: []
+  podSelector: {}
   ingress: []

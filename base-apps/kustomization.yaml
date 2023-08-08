@@ -11,12 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-### can be in base
-kind: NetworkPolicy
-apiVersion: networking.k8s.io/v1
-metadata: 
-  name: default-deny-all-traffic
-  namespace: newapp-1
-spec: 
-  podSelector: {}
-  ingress: []
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources: 
+- default-deny-all-ingress.yaml
