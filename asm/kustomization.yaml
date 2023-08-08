@@ -19,5 +19,5 @@ resources:
 - role.yaml
 - service.yaml
 - serviceaccount.yaml
-# - test-hbl-gateway.yaml
-# - test-hbl-vs.yaml
+- test-hbl-gateway.yaml
+- test-hbl-vs.yaml
