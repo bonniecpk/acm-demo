@@ -54,22 +54,22 @@ patches:
     - op: replace
       path: /metadata/namespace
       value: asm-gateway       
-# - target:
-#     # version: networking.istio.io/v1beta1
-#     kind: Gateway
-#     name: test-smoke-gateway  
-#   patch: |-
-#     - op: replace
-#       path: /metadata/namespace
-#       value: asm-gateway             
-# - target:
-#     # version: networking.istio.io/v1beta1
-#     kind: VirtualService
-#     name: test-smoke-vs  
-#   patch: |-
-#     - op: replace
-#       path: /metadata/namespace
-#       value: asm-gateway    
-#     - op: replace
-#       path: /spec/gateways/0
-#       value: "asm-gateway/test-smoke-gateway"                     
+- target:
+    # version: networking.istio.io/v1beta1
+    kind: Gateway
+    name: test-smoke-gateway  
+  patch: |-
+    - op: replace
+      path: /metadata/namespace
+      value: asm-gateway             
+- target:
+    # version: networking.istio.io/v1beta1
+    kind: VirtualService
+    name: test-smoke-vs  
+  patch: |-
+    - op: replace
+      path: /metadata/namespace
+      value: asm-gateway    
+    - op: replace
+      path: /spec/gateways/0
+      value: "asm-gateway/test-smoke-gateway"                     
