@@ -34,13 +34,13 @@ patches:
     - op: replace
       path: /metadata/namespace
       value: asm-gateway         
-# - target:
-#     kind: Service
-#     name: istio-ingressgateway     
-#   patch: |-
-#     - op: replace
-#       path: /metadata/namespace
-#       value: asm-gateway     
+- target:
+    kind: Service
+    name: istio-ingressgateway     
+  patch: |-
+    - op: replace
+      path: /metadata/namespace
+      value: asm-gateway     
 #     - op: add
 #       path: "/metadata/annotations/networking.gke.io~1load-balancer-type"
 #       value: "Internal"            
