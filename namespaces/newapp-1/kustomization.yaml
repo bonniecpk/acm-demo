@@ -21,7 +21,7 @@ resources:
 - newapp-deployer-role-binding.yaml
 # - newapp-developer-role-binding.yaml
 - newapp-viewer-role-binding.yaml
-# - newapp-service-entry.yaml
+- newapp-service-entry.yaml
 - ../../base-apps
 namespace: newapp-1
 
