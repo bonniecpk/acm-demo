@@ -1,0 +1,75 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ../../base
+- ../../asm
+
+patches:
+- target:
+    kind: Namespace
+    name: xyz-base-namespace
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: asm-gateway
+- target:
+    kind: Deployment
+    name: istio-ingressgateway     
+  patch: |-
+    - op: replace
+      path: /metadata/namespace
+      value: asm-gateway  
+- target:
+    kind: Role
+    name: istio-ingressgateway     
+  patch: |-
+    - op: replace
+      path: /metadata/namespace
+      value: asm-gateway        
+- target:
+    kind: RoleBinding
+    name: istio-ingressgateway     
+  patch: |-
+    - op: replace
+      path: /metadata/namespace
+      value: asm-gateway         
+# - target:
+#     kind: Service
+#     name: istio-ingressgateway     
+#   patch: |-
+#     - op: replace
+#       path: /metadata/namespace
+#       value: asm-gateway     
+#     - op: add
+#       path: "/metadata/annotations/networking.gke.io~1load-balancer-type"
+#       value: "Internal"            
+#     - op: add
+#       path: "/metadata/annotations/networking.gke.io~1internal-load-balancer-allow-global-access"
+#       value: "true"                  
+- target:
+    kind: ServiceAccount
+    name: istio-ingressgateway     
+  patch: |-
+    - op: replace
+      path: /metadata/namespace
+      value: asm-gateway       
+# - target:
+#     # version: networking.istio.io/v1beta1
+#     kind: Gateway
+#     name: test-smoke-gateway  
+#   patch: |-
+#     - op: replace
+#       path: /metadata/namespace
+#       value: asm-gateway             
+# - target:
+#     # version: networking.istio.io/v1beta1
+#     kind: VirtualService
+#     name: test-smoke-vs  
+#   patch: |-
+#     - op: replace
+#       path: /metadata/namespace
+#       value: asm-gateway    
+#     - op: replace
+#       path: /spec/gateways/0
+#       value: "asm-gateway/test-smoke-gateway"                     

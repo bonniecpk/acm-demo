@@ -1,0 +1,17 @@
+
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: test-smoke-vs
+  namespace: xyz-asm-gateway
+spec:
+  hosts:
+  - "test1.hbl.example.com"
+  gateways:
+  - xyz-asm-gateway/test-smoke-gateway
+  http:
+  - route:
+    - destination:
+        port:
+          number: 8080
+        host: "whereami.test-smoke.svc.cluster.local"

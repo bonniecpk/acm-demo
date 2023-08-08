@@ -1,0 +1,45 @@
+# Copyright 2023 Google. This software is provided as-is, without warranty or representation for any use or purpose.
+# Your use of it is subject to your agreement with Google.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istio-ingressgateway
+  namespace: xyz-asm-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: istio-ingressgateway
+      istio: ingressgateway
+  template:
+    metadata:
+      annotations:
+        # This is required to tell Anthos Service Mesh to inject the gateway with the
+        # required configuration.
+        inject.istio.io/templates: gateway
+        # sidecar.istio.io/logLevel: "wasm:debug"
+        # sidecar.istio.io/userVolume: '[{"name":"an1-simple-filter-poc-vol","configMap": [{"name": "an1-simple-filter-poc"}}]'
+        # sidecar.istio.io/userVolumeMount: '[{"mountPath":"/var/local/lib/wasm-filters","name":"an1-simple-filter-poc-vol"}]'
+      labels:
+        app: istio-ingressgateway
+        istio: ingressgateway
+        istio.io/rev: asm-managed-rapid
+    spec:
+      containers:
+        - name: istio-proxy
+          image: auto # The image will automatically update each time the pod starts.
+          resources:
+            limits:
+              cpu: 2000m
+              memory: 1024Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          # volumeMounts:
+          #   - name: an1-simple-filter-poc-vol
+          #     mountPath: /var/local/lib/wasm-filters
+      serviceAccountName: istio-ingressgateway
+      # volumes:
+      #   - name: an1-simple-filter-poc-vol
+      #     configMap:
+      #       name: "an1-simple-filter-poc"
