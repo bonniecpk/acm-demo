@@ -16,8 +16,6 @@ kind: ServiceEntry
 metadata:
   name: allow-egress-httpbin
   namespace: newapp-1
-  annotations:
-    internal.kpt.dev/upstream-identifier: 'networking.istio.io|ServiceEntry|newapp-1|allow-egress-httpbin'
 spec:
   hosts:
   - "httpbin.org"
