@@ -11,16 +11,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources: 
-# - compute-resources.yaml
-- default-deny-all-traffic.yaml
-- namespace.yaml
-# - newapp-adminstrator-role-binding.yaml 
-- newapp-deployer-role-binding.yaml
-# - newapp-developer-role-binding.yaml
-- newapp-viewer-role-binding.yaml
-# - service-account.yaml
-# - service-entry.yaml
-
+### can be in base
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata: 
+  name: default-deny-all-traffic
+spec: 
+  policyTypes:
+  - Ingress
+  podSelector: {} ##matchlabel or name
+  egress: []
+  ingress: []
