@@ -1,4 +1,4 @@
-mmo# Copyright 2023 Google LLC
+# Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +12,15 @@ mmo# Copyright 2023 Google LLC
 # See the License for the specific language governing permissions and
 # limitations under the License.
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+kind: ClusterRoleBinding
 metadata:
-  name: pod-reader
-rules:
-- apiGroups: [""] # "" indicates the core API group
-  resources: ["pods"]
-  verbs: ["get", "watch", "list"]
+  name: newapp-1-ns
+  namespace: newapp-1
+subjects:
+- kind: User
+  name: "newapp-1-deployer-604@cn-datahub-logs.iam.gserviceaccount.com"
+  apiGroup: rbac.authorization.k8s.io 
+roleRef:
+  kind: ClusterRole
+  name: tenant-adminstrator
+  apiGroup: rbac.authorization.k8s.io

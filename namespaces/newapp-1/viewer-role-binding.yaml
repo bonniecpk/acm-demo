@@ -14,15 +14,13 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: newapp-developer
+  name: newapp-viewer
   namespace: newapp-1
 subjects:
-- kind: ServiceAccount
-  name: newapp-1 
+- kind: User
+  name: newapp-1-viewer@cn-datahub-logs.iam.gserviceaccount.com
   apiGroup: rbac.authorization.k8s.io 
-- kind: Group 
-  name: newapp-1-group@example.com
 roleRef:
   kind: ClusterRole
-  name: tenant-developer
+  name: tenant-viewer
   apiGroup: rbac.authorization.k8s.io
