@@ -1,0 +1,14 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: newapp-2-deployer
+  namespace: newapp-2
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: tenant-deployer
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: newapp-2-deployer@cn-datahub-logs.iam.gserviceaccount.com

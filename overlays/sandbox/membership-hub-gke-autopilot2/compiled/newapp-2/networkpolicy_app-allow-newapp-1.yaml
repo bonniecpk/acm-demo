@@ -1,0 +1,15 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: app-allow-newapp-1
+  namespace: newapp-2
+spec:
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: newapp-1
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: asm-gateway
