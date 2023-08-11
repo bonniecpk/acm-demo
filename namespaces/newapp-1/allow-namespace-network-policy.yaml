@@ -31,5 +31,5 @@ spec:
         matchLabels:
           kubernetes.io/metadata.name: asm-gateway
     ports: 
-      - protocol: HTTPS 
+      - protocol: TCP 
         port: 443
