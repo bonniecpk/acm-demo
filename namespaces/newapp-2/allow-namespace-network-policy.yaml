@@ -23,10 +23,13 @@ spec:
   #     app: svc-a
   ingress: 
   - from: 
-    - namespaceSelector: 
-        matchLabels:
-          kubernetes.io/metadata.name: newapp-1
+      - namespaceSelector: 
+          matchLabels:
+            kubernetes.io/metadata.name: newapp-1
   - from:
-    - namespaceSelector: 
-        matchLabels:
-          kubernetes.io/metadata.name: asm-gateway
+      - namespaceSelector: 
+          matchLabels:
+            kubernetes.io/metadata.name: asm-gateway
+    ports: 
+      - protocol: HTTPS 
+        port: 443
