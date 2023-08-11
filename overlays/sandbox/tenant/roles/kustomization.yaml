@@ -14,7 +14,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources: 
-# - tenant-admistrator-role.yaml
 - tenant-deployer-role.yaml
-# - tenant-developer-role.yaml
-# - tennat-view-role.yaml
+- tenant-view-role.yaml
+- tenant-newapp-1-ns-viewer.yaml
+- tenant-newapp-2-ns-viewer.yaml

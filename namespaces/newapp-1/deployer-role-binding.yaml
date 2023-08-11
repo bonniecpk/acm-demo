@@ -18,7 +18,7 @@ metadata:
   namespace: newapp-1
 subjects:
 - kind: User
-  name: "newapp-1-deployer-604@cn-datahub-logs.iam.gserviceaccount.com"
+  name: newapp-1-deployer-604@cn-datahub-logs.iam.gserviceaccount.com
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole

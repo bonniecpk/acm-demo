@@ -17,11 +17,9 @@ resources:
 # - compute-resources.yaml
 - allow-namespace-network-policy.yaml
 - namespace.yaml
-# - newapp-adminstrator-role-binding.yaml 
-- newapp-deployer-role-binding.yaml
-# - newapp-developer-role-binding.yaml
-- newapp-viewer-role-binding.yaml
-- newapp-service-entry.yaml
+- deployer-role-binding.yaml
+- viewer-role-binding.yaml
+- service-entry.yaml
 - ../../base-apps
 namespace: newapp-1
 

@@ -15,7 +15,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: newapp-2-ns
-  namespace: newapp-2
 subjects:
 - kind: User
   name: "newapp-2-deployer@cn-datahub-logs.iam.gserviceaccount.com"
