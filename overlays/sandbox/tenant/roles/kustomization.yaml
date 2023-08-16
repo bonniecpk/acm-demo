@@ -16,5 +16,5 @@ kind: Kustomization
 resources: 
 # - tenant-admistrator-role.yaml
 - tenant-deployer-role.yaml
-# - tenant-developer-role.yaml
+- tenant-developer-role.yaml
 # - tennat-view-role.yaml
