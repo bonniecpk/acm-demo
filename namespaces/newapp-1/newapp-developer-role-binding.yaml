@@ -14,7 +14,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: newapp-developer
+  name: newapp-1-developer
   namespace: newapp-1
 subjects:
 - kind: ServiceAccount
