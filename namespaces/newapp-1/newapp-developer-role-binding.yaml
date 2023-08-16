@@ -22,5 +22,5 @@ subjects:
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
-  name: tenant-developer
+  name: tenant-adminstrator
   apiGroup: rbac.authorization.k8s.io
