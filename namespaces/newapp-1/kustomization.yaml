@@ -19,7 +19,7 @@ resources:
 - namespace.yaml
 # - newapp-adminstrator-role-binding.yaml 
 - newapp-deployer-role-binding.yaml
-# - newapp-developer-role-binding.yaml 
+- newapp-developer-role-binding.yaml 
 - newapp-viewer-role-binding.yaml
 # - newapp-service-entry.yaml
 - ../../base-apps
