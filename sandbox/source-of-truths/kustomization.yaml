@@ -16,4 +16,4 @@ kind: Kustomization
 resources: 
 - ./policy-convention
 - ./root-sync-policies.yaml
-# - ./referential-constraint-config.yaml
+- ./referential-constraint-config.yaml
