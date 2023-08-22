@@ -72,4 +72,18 @@ patches:
       value: asm-gateway    
     - op: replace
       path: /spec/gateways/0
-      value: "asm-gateway/test-smoke-gateway"                     
+      value: "asm-gateway/test-smoke-gateway"   
+- target:
+    kind: Deployment
+    name: istio-ingressgateway-neg  
+  patch: |-
+    - op: replace
+      path: /metadata/namespace
+      value: asm-gateway        
+- target:
+    kind: Service
+    name: istio-ingressgateway-neg   
+  patch: |-
+    - op: replace
+      path: /metadata/namespace
+      value: asm-gateway                    
