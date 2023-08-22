@@ -11,15 +11,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources:
-# - compute-resources.yaml
-# - allow-namespace-network-policy.yaml
-- namespace.yaml
-- deployer-role-binding.yaml
-- viewer-role-binding.yaml
-- service-entry.yaml
-- asm-auth-ns-policy.yaml
-- ../../base-apps
-namespace: newapp-2
+### can be in base
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: asm-auth-ns-policy
+  namespace: newapp-1
+spec:
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["asm-gateway", "newapp-1", "newapp-2"]
+  # - to:
+  #   - operation:
+  #       ports:
+  #       - "443"
+  
+  # kubectl exec "$(kubectl get pod -l app: svc-a -n  tenant-a  -o jsonpath={.items..metadata.name})" -c istio-proxy -n tenant-a -- curl -X POST 127.0.0.1:15000/logging?rbac=debug

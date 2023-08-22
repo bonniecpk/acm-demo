@@ -21,3 +21,6 @@ resources:
 - serviceaccount.yaml
 - test-hbl-gateway.yaml
 - test-hbl-vs.yaml
+- service-neg.yaml
+- mesh-auth-allow-nothing.yaml
+- asm-auth-ns-ingress.yaml

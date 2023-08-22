@@ -15,11 +15,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources: 
 # - compute-resources.yaml
-- allow-namespace-network-policy.yaml
+# - allow-namespace-network-policy.yaml
 - namespace.yaml
 - deployer-role-binding.yaml
 - viewer-role-binding.yaml
 - service-entry.yaml
+- asm-auth-ns-policy.yaml
 - ../../base-apps
 namespace: newapp-1
 

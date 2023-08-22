@@ -1,4 +1,4 @@
-# Copyright 2023 Google LLC
+# Copyright 2021 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,15 +11,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources:
-# - compute-resources.yaml
-# - allow-namespace-network-policy.yaml
-- namespace.yaml
-- deployer-role-binding.yaml
-- viewer-role-binding.yaml
-- service-entry.yaml
-- asm-auth-ns-policy.yaml
-- ../../base-apps
-namespace: newapp-2
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+ name: allow-nothing
+ namespace: istio-system
+spec:
+  action: ALLOW
