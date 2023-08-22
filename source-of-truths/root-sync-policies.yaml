@@ -22,7 +22,7 @@ spec:
   git: 
     repo: "https://github.com/judyzhaoxinwu/acm-policy-controller-library.git"
     branch: hlf-mcm
-    dir: my-policies
+    dir: hb-policies
     auth: none 
     ## token
     # secretRef: 
