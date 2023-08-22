@@ -23,4 +23,4 @@ resources:
 - test-hbl-vs.yaml
 - service-neg.yaml
 - mesh-auth-allow-nothing.yaml
-- asm-allow-ns-ingress.yaml
+- auth-allow-ns-ingress.yaml
