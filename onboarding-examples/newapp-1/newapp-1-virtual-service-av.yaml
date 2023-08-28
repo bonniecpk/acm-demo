@@ -19,7 +19,7 @@ metadata:
 spec:
   hosts:
   - "cluster1.sandbox.whereami.avinashj.in"
-  - "c1.hb.pso-247-ai.com"
+  # - "c1.hb.pso-247-ai.com"
   gateways:
   - "asm-gateway/test-smoke-gateway" ##needs to do
   http:
