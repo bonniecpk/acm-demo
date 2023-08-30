@@ -11,9 +11,26 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources:
-# - no-ext-services.yaml
-- constraint-template.yaml
-# - constraint.yaml
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sEnableSandbox
+metadata: 
+  name: enable-gke-sandbox
+  annotations: 
+    policycontroller: custom-constraint
+spec: 
+  enforcementAction: dryrun
+  match: 
+    kinds: 
+    - kinds: 
+      - Deployment
+    excludedNamespaces: 
+    - config-management-monitoring 
+    - config-management-system 
+    - default 
+    - gatekeeper-system 
+    - gke-connect 
+    - kube-node-lease
+    - kube-public
+    - kube-system
+    - resource-group-system
+      
