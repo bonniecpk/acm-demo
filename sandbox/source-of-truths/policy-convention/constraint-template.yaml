@@ -31,5 +31,5 @@ spec:
         package k8senablesandbox
         violation[{"msg": msg}] {
           input.review.object.spec.template.spec.runtimeClassName != "gvisor"
-          msg := sprint("The deployment needs to include runtimeClassName for gvisor to enable GKE sandbox")
+          msg := sprintf("The deployment needs to include runtimeClassName for gvisor to enable GKE sandbox")
         }
