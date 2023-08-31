@@ -45,7 +45,7 @@ spec:
 
         violation[{"msg": message}] {
           resource := input.review.object
-          # resource.kind == "Deployment"
+          resource.kind == "Deployment"
 
           # missing_or_empty(resource.spec, "template")
 
