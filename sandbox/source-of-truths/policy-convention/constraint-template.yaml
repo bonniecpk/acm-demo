@@ -31,12 +31,12 @@ spec:
       rego: | 
         package k8senablesandbox
 
-        violation[{"msg": msg}] {
+        violation[{"msg": message}] {
           resource = input.review.object
           spec = resource.spec
           template = spec.template
           templatespec = template.spec
-          classname = input.parameters.className
-          templatespec == classname
-          msg := sprintf("The deployment needs to include runtimeClassName for %v to enable GKE sandbox %v, %v, %v. %v", [input.parameters.className, asset, asset.spec.template.spec.runtimeClassName, asset.spec.template.spec.runtimeClassName, className])
+          validName = input.parameters.validName
+          templatespec == validName
+          message := sprintf("The deployment needs to include runtimeClassName for %v to enable GKE sandbox %v, %v, %v. %v", [input.parameters.validName, resource, spec, templatespec, validName])
         }
