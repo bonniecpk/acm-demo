@@ -41,6 +41,10 @@ spec:
           not templatespec
           not templatespec.runtimeClassName
           validName := input.parameters.validName
-          templatespec.runtimeClassName == validName
+          not match(templatespec.runtimeClassName)
           message := sprintf("The deployment needs to include runtimeClassName for %v to enable GKE sandbox %v, %v, %v. %v", [input.parameters.validName, resource, spec, templatespec, validName])
+        }
+
+        match(validName) {
+          validName == "gvisor"
         }
