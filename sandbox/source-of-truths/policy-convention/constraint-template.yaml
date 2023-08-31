@@ -23,7 +23,7 @@ spec:
       validation: 
         openAPIV3Schema: 
           properties:  
-            class_name: 
+            className: 
               description: the runtime class name
               type: string
   targets: 
@@ -36,7 +36,7 @@ spec:
           spec = resource.spec
           template = spec.template
           templatespec = template.spec
-          classname = input.parameters.class_name
+          classname = input.parameters.className
           templatespec == classname
-          msg := sprintf("The deployment needs to include runtimeClassName for %v to enable GKE sandbox %v, %v, %v. %v", [input.parameters.validName, asset, asset.spec[_].template[_].spec[_].runtimeClassName, asset.spec.template.spec.runtimeClassName, valid_name])
+          msg := sprintf("The deployment needs to include runtimeClassName for %v to enable GKE sandbox %v, %v, %v. %v", [input.parameters.className, asset, asset.spec.template.spec.runtimeClassName, asset.spec.template.spec.runtimeClassName, className])
         }
