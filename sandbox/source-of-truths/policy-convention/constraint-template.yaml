@@ -35,8 +35,8 @@ spec:
           resource = input.review.object
           spec = resource.spec
           template = spec.template
-          template_spec = template.spec
-          valid_name = input.parameters.valid_name
-          template_spec == valid_name
+          templatespec = template.spec
+          classname = input.parameters.class_name
+          templatespec == classname
           msg := sprintf("The deployment needs to include runtimeClassName for %v to enable GKE sandbox %v, %v, %v. %v", [input.parameters.validName, asset, asset.spec[_].template[_].spec[_].runtimeClassName, asset.spec.template.spec.runtimeClassName, valid_name])
         }

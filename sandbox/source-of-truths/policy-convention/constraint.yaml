@@ -24,7 +24,7 @@ spec:
   #   - kinds: 
   #     - Deployment
   parameters:
-    valid_name: "gvisor"
+    class_name: "gvisor"
     # excludedNamespaces: 
     # - config-management-monitoring 
     # - config-management-system 
