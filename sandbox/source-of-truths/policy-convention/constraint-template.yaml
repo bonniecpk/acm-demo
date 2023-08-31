@@ -37,10 +37,7 @@ spec:
         template_spec = template.spec
 
         violation[{"msg": msg}] {
-          # asset := input.review.object
-          # asset.kind == "Deployment"
           valid_name = input.parameters.valid_name
           template_spec == valid_name
-          # regex.match("\bgvisor\b", "gvisor")
           msg := sprintf("The deployment needs to include runtimeClassName for %v to enable GKE sandbox %v, %v, %v. %v", [input.parameters.validName, asset, asset.spec[_].template[_].spec[_].runtimeClassName, asset.spec.template.spec.runtimeClassName, valid_name])
         }
