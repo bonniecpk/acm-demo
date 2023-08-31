@@ -55,7 +55,7 @@ spec:
 
           not match(resource.spec.template.spec.runtimeClassName)
 
-          message := springf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
+          message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
         }
 
         match(validName) {
