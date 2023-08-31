@@ -49,15 +49,15 @@ spec:
 
           missing_or_empty(resource.spec, "template")
 
-          # missing_or_empty(resource.spec.template, "spec")
+          missing_or_empty(resource.spec.template, "spec")
           
-          # missing_or_empty(resource.spec.template.spec, "runtimeClassName")
+          missing_or_empty(resource.spec.template.spec, "runtimeClassName")
 
           # not match(resource.spec.template.spec.runtimeClassName)
 
           message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
         }
-        
+
         match(validName) {
           validName == "gvisor"
         }
