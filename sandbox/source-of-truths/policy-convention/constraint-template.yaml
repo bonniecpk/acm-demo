@@ -56,11 +56,12 @@ spec:
           resource := input.review.object
           resource.kind == "Deployment"
           
-          not match(resource.spec.template.spec.runtimeClassName)
+          validName := input.parameters.validName
+          not match(resource.spec.template.spec.runtimeClassName, validName)
 
           message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
         }
 
-        match(validName) {
-          validName == "gvisor"
+        match(validName, value) {
+          validName == value
         }
