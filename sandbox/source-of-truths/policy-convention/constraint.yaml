@@ -15,8 +15,8 @@ apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: K8sEnableSandbox
 metadata: 
   name: enable-gke-sandbox
-  annotations: 
-    policycontroller: custom-constraint
+  # annotations: 
+  #   policycontroller: custom-constraint
 spec: 
   enforcementAction: deny
   # match: 
