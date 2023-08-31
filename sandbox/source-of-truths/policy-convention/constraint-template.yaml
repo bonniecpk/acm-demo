@@ -33,11 +33,11 @@ spec:
 
         violation[{"msg": message}] {
           resource := input.review.object
-          spec := resource.spec
+          spec := resource.spec[_]
           spec == ""
-          template := spec.template
+          template := spec.template[_]
           template == ""
-          templatespec := template.spec
+          templatespec := template.spec[_]
           templatespec == ""
           validName := input.parameters.validName
           templatespec.runtimeClassName != validName
