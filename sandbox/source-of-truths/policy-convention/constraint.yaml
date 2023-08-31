@@ -18,19 +18,21 @@ metadata:
   annotations: 
     policycontroller: custom-constraint
 spec: 
-  enforcementAction: dryrun
+  enforcementAction: deny
   match: 
     kinds: 
     - kinds: 
       - Deployment
-    excludedNamespaces: 
-    - config-management-monitoring 
-    - config-management-system 
-    - default 
-    - gatekeeper-system 
-    - gke-connect 
-    - kube-node-lease
-    - kube-public
-    - kube-system
-    - resource-group-system
+  parameters:
+    valid_name: "gvisor"
+    # excludedNamespaces: 
+    # - config-management-monitoring 
+    # - config-management-system 
+    # - default 
+    # - gatekeeper-system 
+    # - gke-connect 
+    # - kube-node-lease
+    # - kube-public
+    # - kube-system
+    # - resource-group-system
       

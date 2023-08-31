@@ -22,14 +22,19 @@ spec:
         kind: K8sEnableSandbox
       validation: 
         openAPIV3Schema: 
-          # properties:  
-          #   invalidName: 
-          #     type: string
+          properties:  
+            class_name: 
+              description: the runtime class name
+              type: string
   targets: 
     - target: admission.k8s.gatekeeper.sh
       rego: | 
         package k8senablesandbox
         violation[{"msg": msg}] {
-          input.review.object.spec.template.spec.runtimeClassName != "gvisor"
-          msg := sprintf("The deployment needs to include runtimeClassName for gvisor to enable GKE sandbox")
+          asset := input.review.object
+          asset.kind == "Deployment"
+          valid_name = input.parameters.valid_name
+          #asset.spec[_].template[_].spec[_].runtimeClassName == ""
+          regex.match("\bgvisor\b", "gvisor")
+          msg := sprintf("The deployment needs to include runtimeClassName for %v to enable GKE sandbox %v, %v, %v", [input.parameters.validName, asset, asset.spec[_].template[_].spec[_].runtimeClassName, asset.spec.template.spec.runtimeClassName])
         }
