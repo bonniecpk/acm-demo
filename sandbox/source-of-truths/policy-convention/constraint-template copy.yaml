@@ -30,30 +30,19 @@ spec:
     - target: admission.k8s.gatekeeper.sh
       rego: | 
         package k8senablesandbox
-        
-        missing_or_empty(obj, field){
-          not obj[field]
-        }
-
-        missing_or_empty(obj, field){
-          obj[field] == ""
-        }
-
-        missing_or_empty(obj, field){
-          obj[field] == {}
-        }
 
         violation[{"msg": message}] {
           resource := input.review.object
-          resource.kind == "Deployment"
-
-          missing_or_empty(resource.spec, "template")
-
-          missing_or_empty(resource.spec.template, "spec")
-          
-          missing_or_empty(resource.spec.template.spec, "runtimeClassName")
-
-          not match(resource.spec.template.spec.runtimeClassName)
+          spec := resource.spec
+          not spec.template          
+          template := spec.template
+          not template
+          templatespec := template.spec
+          not templatespec
+          not templatespec.runtimeClassName
+          validName := input.parameters.validName
+          not match(templatespec.runtimeClassName)
+          message := sprintf("The deployment needs to include runtimeClassName for %v to enable GKE sandbox %v, %v, %v. %v", [input.parameters.validName, resource, spec, templatespec, validName])
         }
 
         match(validName) {
