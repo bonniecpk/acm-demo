@@ -33,12 +33,10 @@ spec:
 
         violation[{"msg": message}] {
           resource := input.review.object
-          spec := resource.spec[_]
-          spec == ""
-          template := spec.template[_]
-          template == ""
-          templatespec := template.spec[_]
-          templatespec == ""
+          not resource.spec.template.spec.runtimeClassName
+          spec := resource.spec
+          template := spec.template
+          templatespec := template.spec
           validName := input.parameters.validName
           templatespec.runtimeClassName == validName
           message := sprintf("The deployment needs to include runtimeClassName for %v to enable GKE sandbox %v, %v, %v. %v", [input.parameters.validName, resource, spec, templatespec, validName])
