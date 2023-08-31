@@ -16,4 +16,4 @@ kind: Kustomization
 resources:
 # - no-ext-services.yaml
 - constraint-template.yaml
-- constraint.yaml
+# - constraint.yaml
