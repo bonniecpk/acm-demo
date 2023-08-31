@@ -19,10 +19,10 @@ metadata:
   #   policycontroller: custom-constraint
 spec: 
   enforcementAction: deny
-  # match: 
-  #   kinds: 
-  #   - kinds: 
-  #     - Deployment
+  match: 
+    kinds: 
+    - kinds: 
+      - Deployment
   parameters:
     validName: "gvisor"
     # excludedNamespaces: 
