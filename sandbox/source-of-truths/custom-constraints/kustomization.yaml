@@ -11,28 +11,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-apiVersion: constraints.gatekeeper.sh/v1beta1
-kind: K8sEnableSandbox
-metadata: 
-  name: enable-gke-sandbox
-  # annotations: 
-  #   policycontroller: custom-constraint
-spec: 
-  enforcementAction: deny
-  match: 
-    kinds: 
-    - kinds: 
-      - Deployment
-  parameters:
-    validName: "gvisor"
-    # excludedNamespaces: 
-    # - config-management-monitoring 
-    # - config-management-system 
-    # - default 
-    # - gatekeeper-system 
-    # - gke-connect 
-    # - kube-node-lease
-    # - kube-public
-    # - kube-system
-    # - resource-group-system
-      
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+# - no-ext-services.yaml
+- k8senablesandbox-constraint-template.yaml
+- require-sandbox-enabled-deployment-constraint.yaml
