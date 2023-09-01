@@ -146,3 +146,32 @@ spec:
 
           message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
         }  
+
+        #### for StatefulSet
+        violation[{"msg": message}] {
+          resource := input.review.object
+          resource.kind == "StatefulSet"
+          
+          missing_or_empty(resource.spec.template, "spec")
+
+          message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
+        }
+
+        violation[{"msg": message}] {
+          resource := input.review.object
+          resource.kind == "StatefulSet"
+          
+          missing_or_empty(resource.spec.template.spec, "runtimeClassName")
+
+          message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
+        }
+
+        violation[{"msg": message}] {
+          resource := input.review.object
+          resource.kind == "StatefulSet"
+          
+          validName := input.parameters.validName
+          not match(resource.spec.template.spec.runtimeClassName, validName)
+
+          message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
+        }  
