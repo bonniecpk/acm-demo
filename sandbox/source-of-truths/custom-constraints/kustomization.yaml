@@ -18,7 +18,6 @@ resources:
 - k8senablesandbox-constraint-template.yaml
 - require-sandbox-enabled-deployment-constraint.yaml
 
-
 patches: 
 - target: 
     name: require-sandbox-enabled-deployment
