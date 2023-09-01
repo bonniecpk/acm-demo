@@ -42,6 +42,10 @@ spec:
         missing_or_empty(obj, field){
           obj[field] == {}
         }
+
+        match(validName, value) {
+          validName == value
+        }
         
         #### for Deployment
         violation[{"msg": message}] {
@@ -63,6 +67,22 @@ spec:
           message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
         }
 
-        match(validName, value) {
-          validName == value
+        #### for Pod
+        violation[{"msg": message}] {
+          resource := input.review.object
+          resource.kind == "Pod"
+          
+          missing_or_empty(resource.spec, "runtimeClassName")
+
+          message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
         }
+
+        violation[{"msg": message}] {
+          resource := input.review.object
+          resource.kind == "Pod"
+          
+          validName := input.parameters.validName
+          not match(resource.spec.runtimeClassName, validName)
+
+          message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
+        }  
