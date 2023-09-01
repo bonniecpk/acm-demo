@@ -42,7 +42,8 @@ spec:
         missing_or_empty(obj, field){
           obj[field] == {}
         }
-
+        
+        #### for Deployment
         violation[{"msg": message}] {
           resource := input.review.object
           resource.kind == "Deployment"

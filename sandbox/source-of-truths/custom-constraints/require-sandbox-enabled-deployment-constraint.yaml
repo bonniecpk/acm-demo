@@ -14,7 +14,7 @@
 apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: K8sEnableSandbox
 metadata: 
-  name: enable-gke-sandbox
+  name: require-sandbox-enabled-deployment
 spec: 
   enforcementAction: deny
   match: 
@@ -23,6 +23,10 @@ spec:
           - "*"
         kinds: 
           - Deployment
+          - Pod
+          - DaemonSet
+          - StatefulSet
+          - Job
     excludedNamespaces: 
       - config-management-monitoring ## otel-collector
       - config-management-system ## root-reconciler-root-sync-policies and root-reconciler and config-management-operator and reconciler-manager

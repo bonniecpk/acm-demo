@@ -17,3 +17,15 @@ resources:
 # - no-ext-services.yaml
 - k8senablesandbox-constraint-template.yaml
 - require-sandbox-enabled-deployment-constraint.yaml
+
+
+patches: 
+- target: 
+    name: require-sandbox-enabled-deployment
+  patch: |-
+    - op: replace 
+      path: /spec/enforcementAction
+      value: deny
+    - op: add
+      path: /spec/match/namespaces
+      value: ["foo", "foo-1", "foo-2", "hello"]
