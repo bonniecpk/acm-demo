@@ -12,21 +12,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 apiVersion: constraints.gatekeeper.sh/v1beta1
-kind: K8sEnableSandbox
+kind: K8sCustomAutopilotRequireGvisor
 metadata: 
-  name: require-sandbox-enabled-deployment
+  name: custom-autopilot-require-gvisor
 spec: 
-  enforcementAction: deny
+  enforcementAction: dryrun
   match: 
     kinds: 
       - apiGroups:
-          - "*"
-        kinds: 
-          - Deployment
-          - Pod
-          - DaemonSet
-          - StatefulSet
-          - Job
+        - apps
+        kinds:
+        - ReplicaSet
+        - Deployment
+        - StatefulSet
+        - DaemonSet
+      - apiGroups:
+        - ""
+        kinds:
+        - Pod
+      - apiGroups:
+        - batch
+        kinds:
+        - CronJob
+        - Job
     excludedNamespaces: 
       - config-management-monitoring ## otel-collector
       - config-management-system ## root-reconciler-root-sync-policies and root-reconciler and config-management-operator and reconciler-manager

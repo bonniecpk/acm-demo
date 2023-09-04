@@ -14,12 +14,12 @@
 apiVersion: templates.gatekeeper.sh/v1beta1
 kind: ConstraintTemplate
 metadata: 
-  name: k8senablesandbox
+  name: k8scustomautopilotrequiregvisor
 spec: 
   crd: 
     spec: 
       names: 
-        kind: K8sEnableSandbox
+        kind: K8sCustomAutopilotRequireGvisor
       validation: 
         openAPIV3Schema: 
           properties:  
@@ -29,7 +29,7 @@ spec:
   targets: 
     - target: admission.k8s.gatekeeper.sh
       rego: | 
-        package k8senablesandbox
+        package k8scustomautopilotrequiregvisor
         
         missing_or_empty(obj, field){
           not obj[field]
@@ -41,6 +41,10 @@ spec:
 
         missing_or_empty(obj, field){
           obj[field] == {}
+        }
+
+        match(validName, value) {
+          validName == value
         }
         
         #### for Deployment
@@ -63,7 +67,27 @@ spec:
           message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
         }
 
-        #### for Job
+        #### for Pod
+        violation[{"msg": message}] {
+          resource := input.review.object
+          resource.kind == "Pod"
+          
+          missing_or_empty(resource.spec, "runtimeClassName")
+
+          message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
+        }
+
+        violation[{"msg": message}] {
+          resource := input.review.object
+          resource.kind == "Pod"
+          
+          validName := input.parameters.validName
+          not match(resource.spec.runtimeClassName, validName)
+
+          message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
+        }  
+
+         #### for Job
         violation[{"msg": message}] {
           resource := input.review.object
           resource.kind == "Job"
@@ -152,7 +176,49 @@ spec:
           message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
         }  
 
+        #### for CronJob
+        violation[{"msg": message}] {
+          resource := input.review.object
+          resource.kind == "CronJob"
+          
+          missing_or_empty(resource.spec.jobTemplate, "spec")
 
-        match(validName, value) {
-          validName == value
+          message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
         }
+
+        violation[{"msg": message}] {
+          resource := input.review.object
+          resource.kind == "CronJob"
+          
+          missing_or_empty(resource.spec.jobTemplate.spec, "template")
+
+          message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
+        }
+
+        violation[{"msg": message}] {
+          resource := input.review.object
+          resource.kind == "CronJob"
+          
+          missing_or_empty(resource.spec.jobTemplate.spec.template, "spec")
+
+          message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
+        }
+
+        violation[{"msg": message}] {
+          resource := input.review.object
+          resource.kind == "CronJob"
+          
+          missing_or_empty(resource.spec.jobTemplate.spec.template.spec, "runtimeClassName")
+
+          message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
+        }
+
+        violation[{"msg": message}] {
+          resource := input.review.object
+          resource.kind == "CronJob"
+          
+          validName := input.parameters.validName
+          not match(resource.spec.template.spec.runtimeClassName, validName)
+
+          message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
+        }  

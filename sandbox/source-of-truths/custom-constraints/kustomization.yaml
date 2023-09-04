@@ -14,13 +14,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-# - no-ext-services.yaml
-- k8senablesandbox-constraint-template.yaml
-- require-sandbox-enabled-deployment-constraint.yaml
+- K8sCustomAutopilotRequireGvisor-constraint-template.yaml
+- custom-autopilot-require-gvisor-constraint.yaml
 
 patches: 
 - target: 
-    name: require-sandbox-enabled-deployment
+    name: custom-autopilot-require-gvisor
   patch: |-
     - op: replace 
       path: /spec/enforcementAction
