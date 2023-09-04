@@ -218,7 +218,7 @@ spec:
           resource.kind == "CronJob"
           
           validName := input.parameters.validName
-          not match(resource.spec.template.spec.runtimeClassName, validName)
+          not match(resource.spec.jobTemplate.spec.template.spec.runtimeClassName, validName)
 
           message := sprintf("It must have %v as the runtimeClassName for enabling GKE sandbox", [input.parameters.validName])
         }  
