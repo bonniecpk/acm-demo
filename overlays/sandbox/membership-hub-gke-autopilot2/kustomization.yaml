@@ -16,25 +16,25 @@ kind: Kustomization
 resources:
 -  ../../../namespaces/newapp-1
 -  ../../../namespaces/newapp-2
-- ../tenant/roles
--  ../../../namespaces/asm-gateway
+# - ../tenant/roles
+# -  ../../../namespaces/asm-gateway
 - ../../../source-of-truths
 
 patches:
-- target:
-    kind: Deployment
-    name: istio-ingressgateway     
-  patch: |-
-    - op: add
-      path: "/spec/template/metadata/labels/istio.io~1rev"
-      value: "asm-managed-stable"    
-- target:
-    kind: Namespace
-    name: newapp-1
-  patch: |-
-    - op: add
-      path: "/metadata/labels/istio.io~1rev"
-      value: "asm-managed-stable"    
+# - target:
+#     kind: Deployment
+#     name: istio-ingressgateway     
+#   patch: |-
+#     - op: add
+#       path: "/spec/template/metadata/labels/istio.io~1rev"
+#       value: "asm-managed-stable"    
+# - target:
+#     kind: Namespace
+#     name: newapp-1
+#   patch: |-
+#     - op: add
+#       path: "/metadata/labels/istio.io~1rev"
+#       value: "asm-managed-stable"    
 - target:
     kind: Namespace
     name: newapp-2
