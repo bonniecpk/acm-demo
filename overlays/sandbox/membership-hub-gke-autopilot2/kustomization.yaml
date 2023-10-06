@@ -28,13 +28,13 @@ patches:
 #     - op: add
 #       path: "/spec/template/metadata/labels/istio.io~1rev"
 #       value: "asm-managed-stable"    
-# - target:
-#     kind: Namespace
-#     name: newapp-1
-#   patch: |-
-#     - op: add
-#       path: "/metadata/labels/istio.io~1rev"
-#       value: "asm-managed-stable"    
+- target:
+    kind: Namespace
+    name: newapp-1
+  patch: |-
+    - op: add
+      path: "/metadata/labels/istio.io~1rev"
+      value: "asm-managed-stable"    
 - target:
     kind: Namespace
     name: newapp-2
