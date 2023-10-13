@@ -17,7 +17,7 @@ resources:
 -  ../../../namespaces/newapp-1
 -  ../../../namespaces/newapp-2
 # - ../tenant/roles
-# -  ../../../namespaces/asm-gateway
+-  ../../../namespaces/asm-gateway
 - ../../../source-of-truths
 
 patches:
