@@ -18,5 +18,3 @@ metadata:
   namespace: istio-system
 spec:
   action: ALLOW
-  rules: 
-  - {}
