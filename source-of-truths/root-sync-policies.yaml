@@ -27,4 +27,8 @@ spec:
     ## token
     # secretRef: 
     #   name: git-creds
-
+  override:
+    resources:
+    - containerName: reconciler
+      cpuRequest: 500m
+      memoryRequest: 500Mi
