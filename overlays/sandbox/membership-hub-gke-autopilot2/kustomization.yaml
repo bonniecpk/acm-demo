@@ -18,6 +18,7 @@ resources:
 -  ../../../namespaces/newapp-2
 - ../tenant/roles
 - oci-root-sync.yaml
+- dynatrace-ns.yaml
 
 # patches:
 # - target:

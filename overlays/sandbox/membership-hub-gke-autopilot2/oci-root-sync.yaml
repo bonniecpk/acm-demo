@@ -12,6 +12,7 @@ spec:
     chart: dynatrace-gcp-monitor
     version: 0.3.0
     releaseName: dynatrace-gcp-monitor
-    namespace: default
+    namespace: dynatrace
     auth: gcpserviceaccount
     gcpServiceAccountEmail: oci-artifacts-reader@cn-datahub-logs.iam.gserviceaccount.com
+    valuesFile: values.yaml
