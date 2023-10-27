@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: dynatrace-gcp-monitor-cm
+  name: dynatrace-gcp-monitor-cm-1
   namespace: config-management-system
 immutable: true
 # You can use the same format as the default values file to override
