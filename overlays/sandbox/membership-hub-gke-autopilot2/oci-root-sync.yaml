@@ -9,9 +9,9 @@ spec:
   helm:
     # repo: oci://${REGION}-docker.pkg.dev/${PROJECT}/${CONTAINER_REGISTRY_NAME}
     repo: oci://us-central1-docker.pkg.dev/cn-datahub-logs/oci-artifacts
-    chart: test-chart
-    version: 0.1.0
-    releaseName: test-chart
+    chart: dynatrace-gcp-monitor
+    version: 0.3.0
+    releaseName: dynatrace-gcp-monitor
     namespace: default
     auth: gcpserviceaccount
     gcpServiceAccountEmail: oci-artifacts-reader@cn-datahub-logs.iam.gserviceaccount.com
