@@ -1,7 +1,7 @@
 apiVersion: configsync.gke.io/v1beta1
 kind: RootSync
 metadata:
-  name: oci-root-sync
+  name: root-sync-oci
   namespace: config-management-system
 spec:
   sourceFormat: unstructured
