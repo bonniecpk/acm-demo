@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: dynatrace-gcp-monitor-cm-1
+  name: dynatrace-gcp-monitor-cm-2
   namespace: config-management-system
 immutable: true
 # You can use the same format as the default values file to override
 # default values.
 data:
-  values.yaml: |-
+  customized-values.yaml: |-
     image:
       pullPolicy: Always
     primary:
