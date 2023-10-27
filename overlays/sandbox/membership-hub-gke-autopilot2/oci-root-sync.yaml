@@ -20,6 +20,5 @@ spec:
     namespace: dynatrace
     auth: gcpserviceaccount
     gcpServiceAccountEmail: oci-artifacts-reader@cn-datahub-logs.iam.gserviceaccount.com
-    valuesFileRefs: 
-    - name: dynatrace-gcp-monitor-cm-2
-      dataKey: customized-values.yaml
+    values:
+      gcpProjectId: "cn-datahub-logs"
