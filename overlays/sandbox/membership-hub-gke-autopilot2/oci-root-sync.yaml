@@ -17,4 +17,4 @@ spec:
     gcpServiceAccountEmail: oci-artifacts-reader@cn-datahub-logs.iam.gserviceaccount.com
     valuesFileRefs: 
     - name: dynatrace-gcp-monitor-cm
-      datakey: values.yaml
+      dataKey: values.yaml
