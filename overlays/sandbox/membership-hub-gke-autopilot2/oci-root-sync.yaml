@@ -4,6 +4,11 @@ metadata:
   name: root-sync-oci
   namespace: config-management-system
 spec:
+  override:
+    resources:
+    - containerName: reconciler
+      cpuRequest: 500m
+      memoryRequest: 500Mi
   sourceFormat: unstructured
   sourceType: helm
   helm:
