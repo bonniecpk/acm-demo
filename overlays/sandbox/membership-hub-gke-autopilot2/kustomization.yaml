@@ -17,9 +17,9 @@ resources:
 -  ../../../namespaces/newapp-1
 -  ../../../namespaces/newapp-2
 - ../tenant/roles
-- oci-root-sync.yaml
-- dynatrace-ns.yaml
-- dynatrace-gcp-monitor-cm.yaml
+# - oci-root-sync.yaml
+# - dynatrace-ns.yaml
+# - dynatrace-gcp-monitor-cm.yaml
 
 # patches:
 # - target:
