@@ -1,0 +1,17 @@
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: oci-root-sync
+  namespace: config-management-system
+spec:
+  sourceFormat: unstructured
+  sourceType: helm
+  helm:
+    # repo: oci://${REGION}-docker.pkg.dev/${PROJECT}/${CONTAINER_REGISTRY_NAME}
+    repo: us-central1-docker.pkg.dev/cn-datahub-logs/oci-artifacts
+    chart: test-chart
+    version: 0.1.0
+    releaseName: test-chart
+    namespace: default
+    auth: gcpserviceaccount
+    gcpServiceAccountEmail: oci-artifacts-reader@cn-datahub-logs.iam.gserviceaccount.com

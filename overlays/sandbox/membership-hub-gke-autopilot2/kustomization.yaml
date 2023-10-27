@@ -17,6 +17,7 @@ resources:
 -  ../../../namespaces/newapp-1
 -  ../../../namespaces/newapp-2
 - ../tenant/roles
+- oci-root-sync.yaml
 
 # patches:
 # - target:
