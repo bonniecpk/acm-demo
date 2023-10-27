@@ -19,6 +19,7 @@ resources:
 - ../tenant/roles
 - oci-root-sync.yaml
 - dynatrace-ns.yaml
+- dynatrace-gcp-monitor-cm.yaml
 
 # patches:
 # - target:
