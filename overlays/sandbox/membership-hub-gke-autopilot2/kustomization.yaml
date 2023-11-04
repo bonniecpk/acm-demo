@@ -19,6 +19,7 @@ resources:
 # - ../tenant/roles
 -  ../../../namespaces/asm-gateway
 - ../../../source-of-truths
+- referential-constraint-config.yaml
 
 patches:
 # - target:

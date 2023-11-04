@@ -23,7 +23,7 @@ spec:
       labels:
         app: istio-ingressgateway
         istio: ingressgateway
-        istio.io/rev: asm-managed-rapid
+        istio.io/rev: asm-managed-stable
     spec:
       containers:
         - name: istio-proxy
