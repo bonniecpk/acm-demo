@@ -26,7 +26,7 @@ metadata:
   name: istio-ingressgateway
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
+  kind: Rol
   name: istio-ingressgateway
 subjects:
 - kind: User
